@@ -1,0 +1,10 @@
+Package: WMCapSim
+Type: Package
+Title: Simulation of working memory change detection data
+Version: 1.0
+Date: 2009-09-27
+Author: Richard D. Morey
+Maintainer: Richard D. Morey <richarddmorey@gmail.com>
+Description: Simulation of working memory change detection data
+License: GPL 2
+LazyLoad: yes

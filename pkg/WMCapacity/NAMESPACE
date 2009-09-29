@@ -1,0 +1,14 @@
+useDynLib(WMCapacity)
+
+export(WMCapacityGUI,
+       plot.WM2Package,
+       printWM2Package,
+       summary.WM2Package,
+       RlogPosterior,
+       RgradLogPosterior,
+       RlogPosteriorWithCov,
+       RgradLogPosteriorWithCov,
+       RlogLikelihood,
+       RPredVals,
+       WMCapacityConsole)
+
