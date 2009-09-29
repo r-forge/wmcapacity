@@ -134,7 +134,7 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
             progress=pack@settings@MCMCSetup$progress,MetHastScale=pack@settings@MCMCSetup$MHscale,useMH = pack@settings@MCMCSetup$useMH,MetHastThin=pack@settings@MCMCSetup$MHthin)
         }else{
           pack@settings@MCMCSetup = WorkingMemMCMCSetup(optimMaxit=200,nIters=1000,
-            burnin=200,testrun=FALSE,hybridEpsilon=c(.015,.025),
+            burnin=200,testrun=FALSE,hybridEpsilon=c(.02,.035),
             hybridLFsteps=80,hybridMultipoint=FALSE,
             hybridMultipointSize=1,hybridWeight=FALSE,
             hybridMPWeight=TRUE,progress=10)
