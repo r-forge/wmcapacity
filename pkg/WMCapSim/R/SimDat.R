@@ -1,5 +1,4 @@
-`SimDat` <-
-function(Nsub=23,Ntrl=60,SetSizes= c(2,5,8), muK=3.1,sdK=1,muZ = 2.9,sdZ = .46,muIntG=.77,sdIntG=.39,muSlpG=1,sdSlpG=.44,prch = qlogis(c(.3,.5,.7)),KEffect = c(0,-2),GEffect = c(0,-.7))
+`SimDat` <- function(Nsub=23,Ntrl=60,SetSizes= c(2,5,8), muK=3.1,sdK=1,muZ = 2.9,sdZ = .46,muIntG=.77,sdIntG=.39,muSlpG=1,sdSlpG=.44,prch = qlogis(c(.3,.5,.7)),KEffect = c(0,-2),GEffect = c(0,-.7))
 {
 
 Ksub = rnorm(Nsub,muK,sdK)
