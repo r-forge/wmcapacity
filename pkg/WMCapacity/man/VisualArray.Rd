@@ -59,7 +59,7 @@ Morey, Cowan, Zwilling, Morey, and Pratte (2008).
 \source{
 Rouder, J. N., Morey, R. D., Cowan, N., Zwilling, C. E., Morey, C. C. &
 Pratte, M. S. (2008). An Assessment of Fixed-Capacity Models of Visual
-Working Memory. {\em Proceedings of the National Academy of Sciences}, 105, 5976-5979.
+Working Memory. Proceedings of the National Academy of Sciences, 105, 5976-5979.
 }
 \examples{
 data(VisualArray)
