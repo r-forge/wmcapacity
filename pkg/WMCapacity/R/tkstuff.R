@@ -7,7 +7,7 @@ WorkingMemInitInstructions <- function(){
 	tkgrab.set(tt)
 	tktitle(tt) = "Instructions"
 	frameOuter <- tkframe(tt)
-	tkgrid(tklabel(frameOuter,text="WOMMBAT 1.0 Instructions",font=WMCapacityFonts()$fontHeading),row=0,columnspan=3)
+	tkgrid(tklabel(frameOuter,text="WOMMBAT Instructions",font=WMCapacityFonts()$fontHeading),row=0,columnspan=3)
 	
 	# Instructions frame
 	frameInstructions <- tkframe(frameOuter,relief="groove",borderwidth=2)
