@@ -8,7 +8,9 @@
      interface for the \code{WMCapacity} package.
      }
      \usage{
-     WMCapacityGUI(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,name="Analysis",interface=TRUE,doOutput=TRUE, storePred=FALSE)
+     WMCapacityGUI(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,
+                   name="Analysis",interface=TRUE,doOutput=TRUE, 
+                   storePred=FALSE)
      }
      \arguments{
        \item{data}{a data frame containing the trial-by-trial data to be
