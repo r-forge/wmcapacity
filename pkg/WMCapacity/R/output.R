@@ -89,8 +89,11 @@ writeOutputFiles=function(myPack,directory=NULL,outputSettings,storePred=TRUE){
   ## Write Effect parameters
   if(as.integer(outputSettings$ChnEff)) write.csv(myPack@output@Effchains,file=paste(directory,"/",name,"-",time,"-EffectChains.csv",sep=""))
   if(as.integer(outputSettings$PmnEff)) write.csv(myPack@output@par,file=paste(directory,"/",name,"-",time,"-EffectPostMeans.csv",sep=""))
-  if(as.integer(outputSettings$QntEff))  write.csv(t(apply(myPack@output@Effchains[goodIters,],2,quantile,p=c(.025,.05,.1,.25,.5,.75,.9,.95,.975))),file=paste(directory,"/",name,"-",time,"-EffectPostQuantiles.csv",sep=""))
-
+  if(as.integer(outputSettings$QntEff)){
+    quants = t(apply(myPack@output@Effchains[goodIters,],2,quantile,p=c(.025,.05,.1,.25,.5,.75,.9,.95,.975)))
+    sds =  apply(myPack@output@Effchains[goodIters,],2,sd)
+    write.csv(data.frame(quants,sds),file=paste(directory,"/",name,"-",time,"-EffectPostQuantiles.csv",sep=""))
+  }
   ## Write predicted probabilities
 	if(storePred)
 	{
