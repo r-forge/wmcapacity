@@ -388,7 +388,7 @@ createModColsCat <- function(newDat,allMods,intMods,SelCols){
 				newDat2=data.frame(newDat2,newDat[,1]*0+1)
 	      			names=c(names,paste("column",i,"nocat",sep=""))
 			}else if(sum(cc=="CATEG")==1){
-				newDat2=data.frame(newDat2,as.integer(as.factor(newDat[,which(cc=="CATEG")+5])))
+				newDat2=data.frame(newDat2,as.integer(as.factor(newDat[,myCos[which(cc=="CATEG")]+5])))
 	      			names=c(names,paste(colnames(newDat)[(myCols+5)[cc=="CATEG"]],collapse=".x."))				      				      		
 			}else{
 				newDat2=data.frame(newDat2,as.integer(as.factor(apply(cbind(newDat[,(myCols+5)[cc=="CATEG"]]),1,paste,collapse="x"))))
