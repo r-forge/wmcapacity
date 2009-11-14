@@ -66,7 +66,7 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
     
     pack@settings@namedDat2   = createMeaningfulCols(pack@settings@newDat,pack@settings@mods,pack@settings@intMods,pack@settings@SelCols$selectedcols)#,pack@settings@lvlnames)
     
-    pack@settings@Lvls        =  pack@settings@SelEffs2[,3]
+    pack@settings@Lvls        =  as.integer(pack@settings@SelEffs2[,3])
     			      	 #apply(pack@settings@newDat2Cat,2,function(v) length(unique(v)))[-(1:5)]
                                  #getNFactorLevels(pack@settings@mods,pack@settings@intMods)
 
