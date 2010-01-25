@@ -183,7 +183,7 @@ WMCapacityConsole <- function(data=NULL,filename=NULL,setup=NULL,name="Analysis"
       cat("\nMCMC acceptance rate: ",round(mean(diff(output[[2]])!=0),3),"\n");flush.console()
       
       pack@output@burnin = as.numeric(pack@settings@MCMCSetup$burnin)
-      pack@output@par = niceParVec(rowMeans(output[[1]][,(pack@output@burnin+1):as.integer(pack@settings@EffectiveIters)]), pack@settings@newDat2Cat, pack@settings@newDat2Cont, pack@settings@namedDat2, pack@settings@effects, pack@settings@incCont, TRUE)
+      pack@output@par = niceParVec(rowMeans(output[[1]][,(pack@output@burnin+1):as.integer(pack@settings@EffectiveIters)]), pack@settings@newDat2Cat, pack@settings@newDat2Cont, pack@settings@namedDat2, pack@settings@effects, pack@settings@incCont, TRUE,	  apply(output[[1]][,(pack@output@burnin+1):as.integer(pack@settings@EffectiveIters)],1,sd))
       chainnames=paste(pack@output@par[,4],pack@output@par[,2],pack@output@par[,3],sep=" ")
       chainnames=paste(chainnames,pack@output@par[,1],sep=" on ")
       pack@output@Effchains=mcmc(t(output[[1]]))

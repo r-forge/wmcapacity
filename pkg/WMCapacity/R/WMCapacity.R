@@ -223,11 +223,12 @@ int.matrix<-function(m){
 }
 
 
-niceParVec=function(par,newDat2Cat,newDat2Cont,namedDat2,effects,incCont,useA){
+niceParVec=function(par,newDat2Cat,newDat2Cont,namedDat2,effects,incCont,useA,sd=NA){
   
-  newPars=data.frame(array(par,dim=c(length(par),5)))
-  colnames(newPars)=c("Parameter","Effect","Level","Type","Estimate")
+  newPars=data.frame(array(par,dim=c(length(par),6)))
+  colnames(newPars)=c("Parameter","Effect","Level","Type","Estimate","Post. SD")
   newPars[,5]=par
+  newPars[,6]=sd
   newPars[1,1:4]=c("k","grand mean","-","-")
   intcolnames1=colnames(newDat2Cat)[-(1:5)]
   intcolnames2=colnames(newDat2Cont)[-(1:5)]
