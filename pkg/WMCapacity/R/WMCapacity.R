@@ -306,7 +306,7 @@ createDat <- function(data,respColumn,changeColumn,setSizeColumn,interestColumns
 
 	for(i in 1:length(interestColumns[,1])){
 		if(interestColumns[i,2]=="CATEG"){
-			#newData[,i+5] = as.integer(newData[,i+5])			
+			newData[,i+5] = as.factor(as.character(newData[,i+5]))			
 		}else if(interestColumns[i,2]=="CONTIN"){
 			newData[,i+5] = as.numeric(as.character(newData[,i+5]))
 		}
