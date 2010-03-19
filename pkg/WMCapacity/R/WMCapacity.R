@@ -481,7 +481,7 @@ createMeaningfulCols <- function(newDat,allMods,intMods,SelCols)#,LevelNames)
       		cc=CatOrCont(colnames(newDat)[myCols+5],SelCols)
       		if(length(myCols)>1){
 				if(any(cc=="CATEG")){
-					newDat2=data.frame(newDat2,apply(cbind(as.character(namedCols[,myCols[cc=="CATEG"]])),1,paste,collapse=".x."))
+					newDat2=data.frame(newDat2,apply(cbind(apply(namedCols[,myCols[cc=="CATEG"]],c(1,2),as.character)),1,paste,collapse=".x."))
 				}else{
 					newDat2=data.frame(newDat2,rep("(CATEGORICAL)",length(newDat2[,1])))	      			
 				}
