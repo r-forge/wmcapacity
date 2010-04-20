@@ -166,7 +166,7 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
       ## Create progress bar
       progress=as.integer(pack@settings@MCMCSetup$progress)
       if(progress){ pb = txtProgressBar(min = 0, max = as.integer(pack@settings@MCMCSetup$nIter), style = 3) }else{ pb=NULL }
-      pbFun = function(samps){ if(progress) setTxtProgressBar(pb, samps)}
+          pbFun = function(samps){ if(progress) setTxtProgressBar(pb, samps)}
       
         startingvals = jitter((1:(sum(pack@settings@effects)+3))*0)
         startingvals[1] = as.numeric(pack@settings@PriorSetup$meanMuK)
@@ -176,19 +176,27 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
       metropSD = startingvals*0 + metropScale
 
       optimIters=as.numeric(pack@settings@MCMCSetup$optimMaxIter)
-	if(optimIters>0){
-		cat("Using optim() to find starting values...\n")
-		flush.console()
-		optimOut = optim(startingvals,RlogPosterior,RgradLogPosterior,method="BFGS",control=list(maxit=optimIters),setup=pack,hessian=TRUE) 
-	   	   cat("Optim Convergence code: ",optimOut$convergence,"\n")
-		   startingvals=optimOut$par
-      		   if(metrop){
-					if(any(diag(optimOut$hessian)<=0)) stop("Negative values in optim() Hessian diagonal!")
-				metropSD = sqrt(1/abs(diag(optimOut$hessian)))*metropScale
+	      if(optimIters>0){
+		       cat("Using optim() to find starting values...\n")
+		      flush.console()
+		      optimOut = optim(startingvals,RlogPosterior,RgradLogPosterior,method="BFGS",control=list(maxit=optimIters),setup=pack,hessian=TRUE) 
+	   	      cat("Optim Convergence code: ",optimOut$convergence,"\n")
+		      startingvals=optimOut$par
+				cat("Inverting Hessian...\n")
+				pack@settings@MCMCweights = diag(solve(optimOut$hessian))
+			   if(any(pack@settings@MCMCweights<=0)){
+				cat("Negative values in MCMC weights! Using 1 for all weights.\n")
+				pack@settings@MCMCweights = pack@settings@MCMCweights*0 + 1
+			   }
+				
+			   if(metrop){
+					metropSD = sqrt(pack@settings@MCMCweights)*metropScale
 			   }else{
-			metropSD = 0
-		   }
-        }		   
+					metropSD = 0				
+					pack@settings@MCMCweights = pack@settings@MCMCweights*0 + 1
+					#pack@settings@MCMCweights = pack@settings@MCMCweights/exp(mean(log(pack@settings@MCMCweights)))
+			   }
+            }		   
       
       pack@output = new("WM2Output")
       
@@ -224,7 +232,7 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
           as.numeric(pack@settings@PriorSetup$meanMuG), as.numeric(pack@settings@PriorSetup$sdMuG)^2, 
           1, as.integer(pack@settings@Ktype), as.numeric(pack@settings@MCMCSetup$epsLow), 
           (as.numeric(pack@settings@MCMCSetup$epsUpp) - as.numeric(pack@settings@MCMCSetup$epsLow)), 
-          as.integer(pack@settings@MCMCSetup$leapfrog), startingvals*0+1, as.numeric(pack@settings@PriorSetup$WishartDF),
+          as.integer(pack@settings@MCMCSetup$leapfrog), pack@settings@MCMCweights, as.numeric(pack@settings@PriorSetup$WishartDF),
           progress,pbFun,new.env(),as.integer(storePred),as.integer(metrop),metropSD,metropThin,package = "WMCapacity")
         
         pack@output@Meanchains = output[[3]]
@@ -254,7 +262,7 @@ WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,nam
           as.numeric(pack@settings@PriorSetup$meanMuG), as.numeric(pack@settings@PriorSetup$sdMuG)^2, 
           1, as.integer(pack@settings@Ktype), as.numeric(pack@settings@MCMCSetup$epsLow), 
           (as.numeric(pack@settings@MCMCSetup$epsUpp) - as.numeric(pack@settings@MCMCSetup$epsLow)), 
-          as.integer(pack@settings@MCMCSetup$leapfrog), startingvals*0+1, 
+          as.integer(pack@settings@MCMCSetup$leapfrog), pack@settings@MCMCweights, 
           progress,pbFun,new.env(),as.integer(storePred),as.integer(metrop),metropSD,metropThin,package = "WMCapacity")
 		if(storePred) pack@output@predVals = output[[3]]   
       }

@@ -59,7 +59,8 @@ setClass("WM2Settings",
 	incCont="numeric",        # is the effect a slope?
 	PriorSetup="list",        # result of prior selection query
 	MCMCSetup="list",          # result of MCMC setup query
-	EffectiveIters="numeric"  # number of iters after thinning
+	EffectiveIters="numeric",  # number of iters after thinning
+	MCMCweights="numeric"     # weights used in HybridMC (inverse of hessian)
 	),
 contains="list")
 
