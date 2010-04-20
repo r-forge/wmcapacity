@@ -68,7 +68,7 @@ setClass("WM2Output",
       representation(
 	DIC = "array",
 	useCov="logical",
-	Effchains="mcmc",
+	Effchains="ANY",
 	Covchains="list",
 	Corchains="list",
 	Meanchains="matrix",

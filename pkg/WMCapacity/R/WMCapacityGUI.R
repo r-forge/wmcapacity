@@ -2,7 +2,7 @@
 WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,name="Analysis",interface=TRUE,doOutput=TRUE, storePred=FALSE){
 
   noMoreTesting=0
-  WorkingMemInit()
+  #WorkingMemInit()
   passedPackage = class(setup)=="WM2Package"
   pack = new("WM2Package")
  

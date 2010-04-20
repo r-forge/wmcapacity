@@ -1,5 +1,6 @@
 
-WorkingMemInit<-function()
+#WorkingMemInit<-function()
+.onLoad<-function()
 {
   tclRequire("BWidget")
 } 
