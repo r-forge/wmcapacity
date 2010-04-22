@@ -1,6 +1,6 @@
 
 WMCapacityGUI <- function(data=NULL,filename=NULL,setup=NULL,skipInstr=FALSE,name="Analysis",interface=TRUE,doOutput=TRUE, storePred=FALSE){
-
+  tclRequire("BWidget")
   noMoreTesting=0
   #WorkingMemInit()
   passedPackage = class(setup)=="WM2Package"

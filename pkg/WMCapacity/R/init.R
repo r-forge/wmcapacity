@@ -2,7 +2,7 @@
 #WorkingMemInit<-function()
 .onLoad<-function(...)
 {
-  tclRequire("BWidget")
+  cat("WMCapacity loaded: type 'analysis = WMCapacityGUI()' to start the graphical interface.\n\n")
 } 
 
 WMCapacityFonts=function(){
