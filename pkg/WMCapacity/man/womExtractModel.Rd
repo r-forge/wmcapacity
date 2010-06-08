@@ -23,6 +23,7 @@
 
      \value{
 	 A list containing the following elements (if applicable):
+	 \item{modelName}{The name of the model.}
 	 \item{model}{A list containing the model specification.}
 	 \item{priors}{A list containing the prior specification.}
 	 \item{settings}{A list containing the MCMC settings, if an analysis has been performed.}

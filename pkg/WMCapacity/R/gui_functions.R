@@ -7,7 +7,7 @@ as.integer(COLUMNS[name])
 
 womExtractModel <- function(name=1)
 {
-	return(wommbatAnalysis$Model[[name]])
+	return(wommbatAnalysis$Models[[name]])
 }
 
 .womCharVectorToAlternatingCol <- function(v)

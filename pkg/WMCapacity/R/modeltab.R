@@ -964,7 +964,9 @@ return(TRUE)
 	modelName <- theWidget("modelsNameEntry")$getText()
 	
 	wommbatAnalysis$Models[[modelName]] <- list(priors=list(),model=list())
-
+	
+	wommbatAnalysis$Models[[modelName]]$modelName = modelName
+	
 	wommbatAnalysis$Models[[modelName]]$priors$IGa0 <- as.numeric(theWidget("modelsInvGammaEntry1")$getText())
 	wommbatAnalysis$Models[[modelName]]$priors$IGb0 <- as.numeric(theWidget("modelsInvGammaEntry2")$getText())
 	
