@@ -52,9 +52,9 @@ thawGUI <- function() {
 getpackagefile <- function(filename) {
 	## Try firstly to load from the installed wommbat package
 	## Otherwise, look locally.
-	myPath <- system.file("etc", filename, package = "gladetest")
+	myPath <- system.file("etc", filename, package = "WMCapacity")
 	if (identical(myPath, "")) 
-		myPath <- file.path("gladetest", "gladetest", "inst", 
+		myPath <- file.path("WMCapacity", "WMCapacity", "inst", 
 			"etc", filename)
 	if (!file.exists(myPath)) stop("could not find file ", filename)
 	myPath
