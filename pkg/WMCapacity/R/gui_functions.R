@@ -5,6 +5,10 @@ COLUMNS <- c(intro=0,data=1,models=2,analysis=3,diagnostics=4,results=5,save=6)
 as.integer(COLUMNS[name])
 }
 
+womExtractModel <- function(name=1)
+{
+	return(wommbatAnalysis$Model[[name]])
+}
 
 .womCharVectorToAlternatingCol <- function(v)
 {

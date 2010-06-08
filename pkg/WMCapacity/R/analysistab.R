@@ -522,7 +522,7 @@
 	likePostMean <- womRlogLikelihood(results$pointEst[,5],myModel)
 	results$logLikePostMean <- likePostMean
 	.womSetStatusBarText("Computing DIC...")
-	DICpD = womComputeDIC(results$likeChain[(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)],likePostMean)
+	DICpD = .womComputeDIC(results$likeChain[(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)],likePostMean)
 	results$DIC = DICpD[1]
 	results$pD = DICpD[2]
 	

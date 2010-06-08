@@ -1,4 +1,4 @@
-womComputeDIC=function(likeVec,likePostMean){
+.womComputeDIC=function(likeVec,likePostMean){
   Dbar = -2*mean(likeVec)
   Dthetabar = -2*likePostMean
   pD = Dbar - Dthetabar

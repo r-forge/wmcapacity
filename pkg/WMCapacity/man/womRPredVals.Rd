@@ -1,6 +1,6 @@
-     \name{RPredVals}
+     \name{womRPredVals}
      \Rdversion{1.1}
-     \alias{RPredVals}
+     \alias{womRPredVals}
      \title{Compute predicted values for working memory models in the package WMCapacity}
      \description{
        The \code{RPredVals} function computes predicted response probabilities for a
@@ -8,37 +8,42 @@
      parameters. This function is useful for model checking.} 
      
      \usage{
-     RPredVals(x,setup)
+     womRPredVals(x,setup)
      }
      
 
      \arguments{
        \item{x}{the vector containing values at which to evaluate the function.}
-       \item{setup}{an object of class \code{WM2Package}, containing the model information.}
+       \item{setup}{a list object, created by means of the \code{\link{womExtractModel}} function, containing the model specification.}
        }
      \details{
-     The \code{RPredVals} function computes predicted probabilities for the
+     The \code{womRPredVals} function computes predicted probabilities for the
        model and design specified by the \code{setup} argument. The
        probability of responding ``change'' in a change detection task
        is predicted for each trial.
 
-     For further details, see the user's manual at \url{http://drsmorey.org/research/rdmorey/}.
+     For further details, see the user's manual at \url{http://wmcapacity.r-forge.r-project.org/}.
    }
 
      \value{A vector of predicted probabilities; each element
      corresponds to a trial.}
      \seealso{
-       \code{\link{WMCapacityGUI}}, for fitting the working memory models.
+       \code{\link{wommbatGUI}}, for fitting the working memory models, and \code{\link{womExtractModel}} for extracting a model specification.
      }
      \examples{
      \dontrun{
      ## load Visual Array data set (Rouder et al., 2008)
      data(VisualArray)
 
-     output = WMCapacityGUI(data=VisualArray)
+     wommbatGUI(dataFrame = VisualArray)
      
-     # compute log-likelihood at posterior mean 
-     RPredVals(output@output@par[,5],output)
+	 ## Once the model is defined via the GUI, 
+     ## compute log-likelihood at posterior mean
+	 ## replace 'Model' with model name (in quotes)
+	 myModel = womExtractModel('Model')
+	 posteriorMean = myModel$results$pointEst[,5]
+	 
+	 womRPredVals(posteriorMean,myModel)
      }
      
      }

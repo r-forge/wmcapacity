@@ -72,3 +72,9 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 }
 
 
+wommbatNoGUI <- function(project=NULL, projectFile= NULL, settings)
+{
+	cat('This function does nothing right now.\n')
+	return(invisible(NULL))
+}
+
