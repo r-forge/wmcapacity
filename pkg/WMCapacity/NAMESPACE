@@ -1,14 +1,8 @@
-useDynLib(WMCapacity)
+useDynLib(gladetest)
 
-export(WMCapacityGUI,
-       plot.WM2Package,
-       printWM2Package,
-       summary.WM2Package,
-       RlogPosterior,
-       RgradLogPosterior,
-       RlogPosteriorWithCov,
-       RgradLogPosteriorWithCov,
-       RlogLikelihood,
-       RPredVals,
-       WMCapacityConsole)
+import(RGtk2)
+import(grDevices)
+
+exportPattern("_") # Needed for the Glade interface
+exportPattern("^[^\\.]")
 

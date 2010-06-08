@@ -1,12 +1,13 @@
 Package: WMCapacity
 Type: Package
 Title: GUI implementing Bayesian working memory models
-Version: 0.9.3.1
-Date: 2009-06-20
-Depends: gtools, coda, tcltk, methods
-Author: Richard D. Morey
-Maintainer: Richard D. Morey <richarddmorey@gmail.com>
+Version: 0.9.5.0
+Date: 2010-05-05
+Author: R. D. Morey <richarddmorey@gmail.com>
+Maintainer: R. D. Morey <richarddmorey@gmail.com>
+Depends: gtools, gWidgets, gWidgetsRGtk2, coda, cairoDevice
+Imports: RGtk2, grDevices
 Description: A GUI R implementation of hierarchical Bayesian models of working memory, used for analyzing change detection data.
 License: GPL 2
 LazyLoad: yes
-
+URL: http://drsmorey.org/research/rdmorey/

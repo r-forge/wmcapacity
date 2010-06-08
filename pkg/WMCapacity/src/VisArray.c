@@ -15,7 +15,7 @@
 #include <R_ext/Random.h>
 #include <R_ext/BLAS.h>
 
-void R_CheckUserInterrupt(void);
+
 
 SEXP WM2_GibbsSampler(SEXP iters, SEXP starteffects, SEXP nCovMatR, SEXP obsCovMatR, SEXP sizeCovMatR, SEXP parStartR, SEXP covEffSlopeR, SEXP nHit, SEXP nMiss, SEXP nFA,
 		      SEXP nCR,  SEXP setSize, SEXP design, SEXP designCont, SEXP Keffects, SEXP KeffectsSlope, SEXP KeffectsCov, 
