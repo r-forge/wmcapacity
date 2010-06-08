@@ -1,4 +1,4 @@
 
 .onAttach <- function(libname, pkgname) {
-	packageStartupMessage("WMCapacity package loaded. Type 'wommbatGUI()' to start!")
+	packageStartupMessage("\n\nWMCapacity package loaded. Type 'wommbatGUI()' to start!")
 }

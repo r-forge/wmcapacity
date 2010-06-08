@@ -1,4 +1,4 @@
-useDynLib(gladetest)
+useDynLib(WMCapacity)
 
 import(RGtk2)
 import(grDevices)

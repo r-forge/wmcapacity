@@ -125,7 +125,7 @@ womRlogPosteriorWithCov = function(x,setup,precList,means)
 		setup$priors$muZSD^2,
 		setup$priors$muGMean,
 		setup$priors$muGSD^2, 1,
-		as.integer(setup$Ktype)
+		as.integer(setup$Ktype),
 		precList, means,
 		as.integer(setup$model$covObs),
 		as.integer(setup$model$covSizes),
@@ -160,7 +160,7 @@ womRgradLogPosteriorWithCov = function(x,setup,precList,means)
 		setup$priors$muZSD^2,
 		setup$priors$muGMean,
 		setup$priors$muGSD^2, 1,
-		as.integer(setup$Ktype)
+		as.integer(setup$Ktype),
 		precList, means,
 		as.integer(setup$model$covObs),
 		as.integer(setup$model$covSizes),
