@@ -123,6 +123,13 @@
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="wrap_mode">word</property>
+                                <property name="text" translatable="yes">Begin analysis by clicking the "Data set" tab above. Each row in the data set must correspond to a trial, which columns containing relevant information about the trial. Data can be loaded in several ways - from a CSV file, from an R data frame (within R), and from a previously saved analysis. At least four columns are necessary (but their names may be whatever you like):
+
+Response: must be 0 or 1. "0" means the participant responded "no change".
+Change: must be 0 or 1. "0" means that there was no stimulus change on that trial.
+Set size: indicates stimulus set size on that trial. must be all integers greater than 0.
+
+The fourth required column is some factor/covariate.</property>
                               </widget>
                             </child>
                           </widget>
@@ -164,6 +171,13 @@
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="wrap_mode">word</property>
+                                <property name="text" translatable="yes">The WoMMBAT software is copyrighted 2010 by Richard D. Morey. The software is free; the source code is available under the Gnu Public License, v2.0. For the most current citation information, contact Richard D. Morey at r.d.morey@rug.nl. 
+
+The citation for the hierarchical Bayesian model underlying the software is:
+Morey, R. D. (in press). A hierarchical Bayesian model for the measurement of working memory capacity. Journal of Mathematical Psychology.
+
+The article to cite for the WoMMBAT software is currently in preparation:
+Morey, R. D. and Morey, C. C. (in preparation). WoMMBAT: a graphical user interface for estimating working memory capacity in change detection data.</property>
                               </widget>
                             </child>
                           </widget>
