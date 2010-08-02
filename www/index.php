@@ -26,12 +26,16 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <!-- R-Forge Logo -->
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr><td>
-<a href="/"><img src="<?php echo $themeroot; ?>/images/logo.png" border="0" alt="R-Forge Logo" /> </a> </td> </tr>
+<a href="/"><img src="http://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" border="0" alt="R-Forge" width="205" height="54">
+ </a> </td> </tr>
 </table>
-
 
 <!-- get project title  -->
 <!-- own website starts here, the following may be changed as you like -->
+<hr>
+<br>
+<center>
+<img src="images/tempbanner.jpg" border="0" alt="WoMMBAT logo">
 
 <?php if ($handle=fopen('http://'.$domain.'/export/projtitl.php?group_name='.$group_name,'r')){
 $contents = '';
