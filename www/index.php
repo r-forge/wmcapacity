@@ -61,10 +61,10 @@ echo $contents; } ?>
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>.
 <li> Download and install the latest version of the GTK+ development libraries for Windows from the <a href="http://sourceforge.net/projects/gladewin32/files/gtk%2B-win32-devel/2.12.9/" target="null"> Glade/GTK+ SourceForge site</a>.
 <li> Start R. Cut and paste the following line of code into the R console:
-<code>
+<p><code>
 install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 </code> 
-This will install the most recent stable version of WoMMBAT inside R.
+<p>This will install the most recent stable version of WoMMBAT inside R.
 </ol>
 
 
@@ -75,10 +75,10 @@ This will install the most recent stable version of WoMMBAT inside R.
 <li> If you haven't alread installed the Mac OS X X11 libraries, install them using your OS X install disk. Instructions may be found on the <a href="http://developer.apple.com/opensource/tools/runningx11.html" target="null">Apple developer website</a>.
 <li> Download and install the latest version of the special R version of the GTK+ libraries (maintained by AT&amp;T research) from <a href="http://r.research.att.com" target="null"> here</a>. You want the GTK+ framework, under "Other binaries". If you don't have Leopard (OS X 10.5), try installing an older version of the GTK+ framework, available in their <a href="http://r.research.att.com/libs/" target="null">archive</a>.
 <li> Start R. Cut and paste the following line of code into the R console:
-<code>
+<P><code>
 install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 </code> 
-This will install the most recent stable version of WoMMBAT inside R.
+<P>This will install the most recent stable version of WoMMBAT inside R.
 </ol>
 
 
@@ -88,10 +88,10 @@ This will install the most recent stable version of WoMMBAT inside R.
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>. Alternatively, you may install R from your Linux version's software repository (although it may not be the latest version).
 <li> Download and install the latest version of the GTK+ libraries. They may already be installed, if you are using a GNOME desktop. Ensure you have the latest version; if not, install the latest version available through your Linux distribution's software repository.
 <li> Start R. Cut and paste the following line of code into the R console:
-<code>
+<p><code>
 install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 </code> 
-This will install the most recent stable version of WoMMBAT inside R.
+<p>This will install the most recent stable version of WoMMBAT inside R.
 </ol>
 
 <H2>Starting the WoMMBAT Graphical User Interface</H2>
@@ -108,10 +108,10 @@ This will load the WoMMBAT package within R, and prepare it to be run.
 wommbatGUI()
 </code>
 After running the wommbatGUI() function, a new window should open which looks like this:<br />
-<img src="images/" border="0" alt="WoMMBAT logo" />
+<img src="images/wommbatStart.png" border="0" alt="WoMMBAT start screen" width="405" height="314" />
 <br />
 You may now start running WoMMBAT analyses.
-<li>If the interface doesn't load, send me (Richard Morey) an email at <img src="http://drsmorey.org/research/rdmorey/images/address.jpg">. Try to give me as much relevant information as possible, including any output in R when installing/loading WoMMBAT in R, what operating system you are running, and what version of R you are running. I'll try to get back with you as soon as possible. 
+<li>If the interface doesn't load, send me (Richard Morey) an email at <img src="http://drsmorey.org/research/rdmorey/images/address.jpg">. Try to give me as much relevant information as possible, including any output in R when installing/loading WoMMBAT in R, what operating system you are running, and what version of R you are running. I'll try to get back to you as soon as possible. 
 </ol>
 
 
