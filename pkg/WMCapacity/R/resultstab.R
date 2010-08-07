@@ -36,7 +36,7 @@ as.integer(COLUMNS[name])
 {
 	nRows = length(rows)
 	clipboardText = ""
-	rowText=1:5 * NA
+	rowText=1:7 * NA
 	for(i in 1:nRows)
 	{
 		path = rows[[i]]
