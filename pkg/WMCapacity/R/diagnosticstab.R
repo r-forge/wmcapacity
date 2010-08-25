@@ -395,7 +395,7 @@
 		StateEnv$Graphics$DensityDevice = dev.cur()
 	}
 	par(mar=c(4.5,0,0,0))
-	plot(density(chain),axes=FALSE,xlab="Parameter Estimate",main="")
+	plot(density(chain[-(1:burnin)]),axes=FALSE,xlab="Parameter Estimate",main="")
 	abline(v=postMean,col="blue",lwd=2)
 	abline(v=postQuant,col="blue",lty=2)
 	axis(1)
@@ -410,7 +410,7 @@
 		StateEnv$Graphics$ACFDevice = dev.cur()
 	}
 	par(mar=c(4.5,4,1,1))
-	acf(chain)
+	acf(chain[-(1:burnin)])
 	axis(1)
 	box()
 
