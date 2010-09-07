@@ -1381,7 +1381,7 @@ SEXP WM2_GibbsSampler(SEXP iters, SEXP starteffects, SEXP nCovMatR, SEXP obsCovM
 
   // start Gibbs sampler  
   for(i=0;i<iIters;i++){
-  void R_CheckUserInterrupt(void);
+  R_CheckUserInterrupt();
 
     //Check to see if we need to update the progress bar
     if(iProgress && !((i+1)%iProgress)){
@@ -1729,7 +1729,7 @@ SEXP WM2_GibbsSamplerNoCov(SEXP iters, SEXP starteffects, SEXP nHit, SEXP nMiss,
 
   // start Gibbs sampler  
   for(i=0;i<iIters;i++){
-  void R_CheckUserInterrupt(void);
+  R_CheckUserInterrupt();
   
   //printf("Iteration %d\n",i);
   //Check to see if we need to update the progress bar
