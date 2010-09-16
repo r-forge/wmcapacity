@@ -264,7 +264,7 @@ void WM2_rmvGaussianC(double *mu, double *Sigma, int p)
   psqr = p * p;
   scCp = Memcpy(Calloc(psqr,double), Sigma, psqr);
 
-  F77_NAME(dpotrf)("U", &p, scCp, &p, &info);
+  F77_NAME(dpotrf)("L", &p, scCp, &p, &info);
   if (info)
     error("Sigma matrix is not positive-definite");
   
@@ -273,7 +273,7 @@ void WM2_rmvGaussianC(double *mu, double *Sigma, int p)
     {
       ans[j] = rnorm(0,1);
     }
-  F77_NAME(dtrmv)("U","N","N", &p, scCp, &p, ans, &intOne);
+  F77_NAME(dtrmv)("L","N","N", &p, scCp, &p, ans, &intOne);
   F77_NAME(daxpy)(&p, &one, ans, &intOne, mu, &intOne);
   PutRNGstate();
   Free(scCp);
