@@ -173,8 +173,10 @@ SEXP WM2_rWishartR(SEXP dfp, SEXP scal, SEXP Inv)
     PROTECT(scCp = allocMatrix(REALSXP, p, p));
     Memcpy(REAL(scCp), REAL(scal), psqr);
     
+	GetRNGstate();
     WM2_rWishartC(df, REAL(scCp), p, iInv);
-
+	PutRNGstate();
+	
     UNPROTECT(1); 
     return scCp;
 }
@@ -197,7 +199,7 @@ void WM2_rWishartC(double df, double *scal, int p, int Inv)
     if (j)
 	error("scal matrix is not positive-definite.");
 
-    GetRNGstate();	
+    //GetRNGstate();	
     
     std_rWishart_factor(df, p, 1, tmp);
     
@@ -212,7 +214,7 @@ void WM2_rWishartC(double df, double *scal, int p, int Inv)
     }
     internal_symmetrize(scCp, p);
     
-    PutRNGstate();
+    //PutRNGstate();
     
     Memcpy(scal, scCp, psqr);
     Free(scCp); Free(tmp);
@@ -246,9 +248,10 @@ SEXP WM2_rmvGaussianR(SEXP mu, SEXP Sigma)
 
     scCp = Memcpy(Calloc(psqr,double), REAL(Sigma), psqr);
 
-    
+    GetRNGstate();
     WM2_rmvGaussianC(ansp, scCp, p);
-    
+    PutRNGstate();
+	
     Free(scCp);
 
     UNPROTECT(1);
@@ -268,14 +271,14 @@ void WM2_rmvGaussianC(double *mu, double *Sigma, int p)
   if (info)
     error("Sigma matrix is not positive-definite");
   
-  GetRNGstate();
+  //GetRNGstate();
   for(j=0;j<p;j++)
     {
       ans[j] = rnorm(0,1);
     }
   F77_NAME(dtrmv)("L","N","N", &p, scCp, &p, ans, &intOne);
   F77_NAME(daxpy)(&p, &one, ans, &intOne, mu, &intOne);
-  PutRNGstate();
+  //PutRNGstate();
   Free(scCp);
 }
 
