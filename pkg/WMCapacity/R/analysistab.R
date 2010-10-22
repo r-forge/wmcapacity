@@ -505,10 +505,12 @@
 	results$accRate = round(mean(diff(output[[2]])!=0),3)
 	postSD = apply(output[[1]][,(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)],1,sd)
 	effSize = apply(output[[1]][,(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)],1,effectiveSize)
+	specar = unlist(apply(output[[1]][,(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)],1,spectrum0.ar))
+	specar = matrix(specar,nrow=2)[1,]
 	results$pointEst = .womNiceParVec(rowMeans(output[[1]][,(myModel$settings$burninIters+1):as.integer(myModel$settings$effectiveIters)]), 
 										myModel$model$newDat2Cat, myModel$model$newDat2Cont, myModel$model$namedDat2, myModel$model$effects, 
 										myModel$model$incCont, TRUE,	
-										postSD,postSD/sqrt(effSize))
+										postSD,sqrt(specar/(myModel$settings$effectiveIters-myModel$settings$burninIters)))
 	chainnames=paste(results$pointEst[,4],results$pointEst[,2],results$pointEst[,3],sep=" ")
 	chainnames=paste(chainnames,results$pointEst[,1],sep=" on ")
 	## Add in names of Covariance matrices!
