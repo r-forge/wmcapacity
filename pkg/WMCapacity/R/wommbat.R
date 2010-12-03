@@ -42,19 +42,28 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 	gtkAdjustmentSetValue(scrollBar$getAdjustment(), 1)
 	StateEnv$handlers$diagnosticScrollBar1 <- gSignalConnect(theWidget("hscrollbar1"), "value-changed", .scrolled_diagnostics_scrollbar)
 	
-	#Connect chain limit signal
-	limitCombo <- theWidget("diagnosticCombobox1")
-	StateEnv$handlers$diagnosticLimitCombo <- gSignalConnect(limitCombo, "changed", .selected_number_chain_iterations)
-
-	# Connect parameter type signal
-	typeCombo <- theWidget("diagnosticTypeComboBox")
-	StateEnv$handlers$diagnosticTypeCombo <- gSignalConnect(typeCombo, "changed", .selected_diagnostic_parameter_type)
 	
 	resultsSelection <- theWidget("resultsParEstTreeview")$getSelection()		
 	gtkTreeSelectionSetMode(resultsSelection, "GTK_SELECTION_MULTIPLE")
 	gSignalConnect(resultsSelection, "changed", .resultsSelectionChanged)
 
-	
+	# This should not be here. It is for testing purposes.
+	itersSpace = theWidget('diagnosticItersComboSpace')
+	typeSpace = theWidget('diagnosticTypeComboSpace')
+	StateEnv$itersCombo = gtkComboBoxNewText()
+	StateEnv$typeCombo = gtkComboBoxNewText()
+	gtkComboBoxAppendText(StateEnv$itersCombo, "All")
+	gtkComboBoxAppendText(StateEnv$typeCombo, "effects")
+	itersSpace$packStart(StateEnv$itersCombo,FALSE,FALSE,0)
+	typeSpace$packStart(StateEnv$typeCombo,FALSE,FALSE,0)
+	gtkComboBoxSetActive(StateEnv$itersCombo,0)
+	gtkComboBoxSetActive(StateEnv$typeCombo,0)
+	#Connect chain limit signal
+	StateEnv$handlers$diagnosticLimitCombo <- gSignalConnect(StateEnv$itersCombo, "changed", .selected_number_chain_iterations)
+	# Connect parameter type signal
+	StateEnv$handlers$diagnosticTypeCombo <- gSignalConnect(StateEnv$typeCombo, "changed", .selected_diagnostic_parameter_type)
+	# Above should not be here. Move to own function!
+
 	
 	.womSetInitialSensitivity()
 	
@@ -82,7 +91,7 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 
 wommbatNoGUI <- function(project=NULL, projectFile= NULL, settings)
 {
-	cat('This function does nothing right now.\n')
+	stop('This function is not yet implemented.')
 	return(invisible(NULL))
 }
 

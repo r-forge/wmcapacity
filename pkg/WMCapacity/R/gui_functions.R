@@ -193,3 +193,13 @@ fileChoose <- function(action="cat", text = "Select a file...", type="open", ...
 	browseURL(url="http://wmcapacity.r-forge.r-project.org/")
 }
 
+clearComboModel <- function(combo)
+{
+	gtkComboBoxSetActive(combo,-1)
+	model = gtkComboBoxGetModel(StateEnv$itersCombo)
+	Nelements = gtkTreeModelIterNChildren(model)
+	for(i in 1:Nelements)
+	{
+		gtkComboBoxRemoveText(combo, 0)
+	}
+}

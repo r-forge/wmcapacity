@@ -3089,11 +3089,13 @@ Hastings instead?</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="diagnosticCombobox1">
+                      <object class="GtkHBox" id="diagnosticItersComboSpace">
                         <property name="visible">True</property>
+                        <child>
+                          <placeholder/>
+                        </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -3111,11 +3113,13 @@ Hastings instead?</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox" id="diagnosticTypeComboBox">
+                          <object class="GtkHBox" id="diagnosticTypeComboSpace">
                             <property name="visible">True</property>
+                            <child>
+                              <placeholder/>
+                            </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>

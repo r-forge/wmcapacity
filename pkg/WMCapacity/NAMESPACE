@@ -6,4 +6,4 @@ import(grDevices)
 exportPattern("_") # Needed for the Glade interface
 export(wommbatGUI,wommbatNoGUI,womExtractModel,womRlogPosterior,womRgradLogPosterior,
 		womRlogLikelihood,womRPredVals,womRlogPosteriorWithCov,
-		womRgradLogPosteriorWithCov,theWidget)
+		womRgradLogPosteriorWithCov,theWidget,StateEnv)
