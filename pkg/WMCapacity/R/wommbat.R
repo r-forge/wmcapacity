@@ -14,17 +14,25 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 	StateEnv$update <- list()
 	wommbatAnalysis$Models <- list()
 	
-	StateEnv$echo.to.console <- T
-	StateEnv$echo.to.log <- T
+	StateEnv$echo.to.console <- TRUE
+	StateEnv$echo.to.log <- TRUE
 	StateEnv$Graphics <- list()
 	
-	StateEnv$GUI <- gladeXMLNew(getpackagefile("wommbatGlade.glade"),
-		root="window1")
+	#StateEnv$GUI <- gladeXMLNew(getpackagefile("wommbatGlade.glade"),
+	#	root="window1")
+
+	StateEnv$GUI <- gtkBuilder()
+	filename <- getpackagefile("wommbatMain.ui")
+	res <- StateEnv$GUI$addFromFile(filename)
+	if (!is.null(res$error))
+		stop("ERROR: ", res$error$message)
+		
 	StateEnv$win <- theWidget("window1")
 	StateEnv$win$setTitle("WoMMBAT")
 	
 	# connect the callbacks (event handlers)
-	gladeXMLSignalAutoconnect(StateEnv$GUI)
+	#gladeXMLSignalAutoconnect(StateEnv$GUI)
+	StateEnv$GUI$connectSignals(NULL)
 	StateEnv$handlers = list()
 	
 	# Connect scrollbar signal

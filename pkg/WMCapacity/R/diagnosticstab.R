@@ -177,6 +177,7 @@
 
 .selected_diagnostics_model_row <- function(treeview, path, view_column)
 {
+	
 	treeview <- theWidget("diagnosticDefinedModelsTreeview")
 	model = gtkTreeViewGetModel(treeview)	
 	
@@ -186,6 +187,7 @@
 	
 	myModel = wommbatAnalysis$Models[[modelName]]
 
+		
 	if(is.null(myModel$results))
 	{
 		.womClearDiagnosticPlots()
@@ -208,6 +210,7 @@
 	burnin <- myModel$settings$burninIters
 	upperLimit <- myModel$settings$effectiveIters
 	
+
 	# Make options model
 	limitOptions <-c(upperLimit-burnin,500,1000,5000)
 	limitOptions <- limitOptions[limitOptions <= upperLimit-burnin]
@@ -220,7 +223,7 @@
 		limitCombo$appendText(LO)
 	}
 	gtkComboBoxSetActive(limitCombo,selectIters)
-	
+		
 	# Combo box for parameter type
 	currentValueType = theWidget("diagnosticTypeComboBox")$getActiveText()
 	currentValueType = ifelse(is.null(currentValueType),"effect",currentValueType)

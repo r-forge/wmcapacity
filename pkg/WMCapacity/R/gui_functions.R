@@ -33,7 +33,7 @@ womExtractModel <- function(name=1)
 
 
 theWidget <- function(name) {
-	return(StateEnv$GUI$getWidget(name))
+	return(StateEnv$GUI$getObject(name))
 }
 
 freezeGUI <- function(echo.to.log=T) {
