@@ -6,7 +6,7 @@ Date: 2010-05-05
 Author: R. D. Morey <richarddmorey@gmail.com>
 Maintainer: R. D. Morey <richarddmorey@gmail.com>
 Depends: gtools, gWidgets, gWidgetsRGtk2, coda, cairoDevice
-Imports: RGtk2, grDevices
+Imports: RGtk2, grDevices, XML
 Description: A GUI R implementation of hierarchical Bayesian models of working memory, used for analyzing change detection data.
 License: GPL 2
 LazyLoad: yes

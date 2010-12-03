@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<WMCapacity-tooltips>
+  <tooltip widget="dataUnlockButton">Makes column selection active with current data set, but removes all currently defined models.</tooltip>
+</WMCapacity-tooltips>

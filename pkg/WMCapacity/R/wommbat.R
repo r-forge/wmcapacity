@@ -63,7 +63,9 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 	# Connect parameter type signal
 	StateEnv$handlers$diagnosticTypeCombo <- gSignalConnect(StateEnv$typeCombo, "changed", .selected_diagnostic_parameter_type)
 	# Above should not be here. Move to own function!
-
+	
+	.loadTooltips()
+	.populateTexviews()
 	
 	.womSetInitialSensitivity()
 	

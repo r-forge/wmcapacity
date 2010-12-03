@@ -203,3 +203,22 @@ clearComboModel <- function(combo)
 		gtkComboBoxRemoveText(combo, 0)
 	}
 }
+
+
+# Next two functions taken from rattle
+Rtxt <- function(...)
+{
+  # 100130 Currently, on Windows we are waiting for 2.12.17 of  RGtk2 with
+  # rgtk2_bindtextdomain().
+
+#  if (.Platform$OS.type == "windows")
+#    paste(...)
+#  else
+    gettext(paste(...), domain="R-rattle")
+}
+
+# This is used to avoid the string being identified as a translation, as in
+# RtxtNT(paste(vals ...))
+
+RtxtNT <- Rtxt
+
