@@ -59,7 +59,7 @@ echo $contents; } ?>
 
 <ol>
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>.
-<li> Download and install the latest version of the GTK+ development libraries for Windows from the <a href="http://sourceforge.net/projects/gladewin32/files/gtk%2B-win32-devel/2.12.9/" target="null"> Glade/GTK+ SourceForge site</a>.
+<li> Download and install the latest version of the GTK+ runtime for Windows from the <a href="http://gtk-win.sourceforge.net/home/index.php/Downloads" target="null"> GTK SourceForge site</a>.
 <li> Start R. Cut and paste the following line of code into the R console:
 <p><code>
 install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
