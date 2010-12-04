@@ -47,25 +47,9 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 	gtkTreeSelectionSetMode(resultsSelection, "GTK_SELECTION_MULTIPLE")
 	gSignalConnect(resultsSelection, "changed", .resultsSelectionChanged)
 
-	# This should not be here. It is for testing purposes.
-	itersSpace = theWidget('diagnosticItersComboSpace')
-	typeSpace = theWidget('diagnosticTypeComboSpace')
-	StateEnv$itersCombo = gtkComboBoxNewText()
-	StateEnv$typeCombo = gtkComboBoxNewText()
-	gtkComboBoxAppendText(StateEnv$itersCombo, "All")
-	gtkComboBoxAppendText(StateEnv$typeCombo, "effects")
-	itersSpace$packStart(StateEnv$itersCombo,FALSE,FALSE,0)
-	typeSpace$packStart(StateEnv$typeCombo,FALSE,FALSE,0)
-	gtkComboBoxSetActive(StateEnv$itersCombo,0)
-	gtkComboBoxSetActive(StateEnv$typeCombo,0)
-	#Connect chain limit signal
-	StateEnv$handlers$diagnosticLimitCombo <- gSignalConnect(StateEnv$itersCombo, "changed", .selected_number_chain_iterations)
-	# Connect parameter type signal
-	StateEnv$handlers$diagnosticTypeCombo <- gSignalConnect(StateEnv$typeCombo, "changed", .selected_diagnostic_parameter_type)
-	# Above should not be here. Move to own function!
-	
+	.womSetupDiagnosticsComboBox()	
 	.loadTooltips()
-	.populateTexviews()
+	.populateTextviews()
 	
 	.womSetInitialSensitivity()
 	
