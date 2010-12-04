@@ -205,7 +205,7 @@ clearComboModel <- function(combo)
 }
 
 
-# Next two functions taken from rattle
+# Next four functions taken from rattle
 Rtxt <- function(...)
 {
   # 100130 Currently, on Windows we are waiting for 2.12.17 of  RGtk2 with
@@ -222,3 +222,30 @@ Rtxt <- function(...)
 
 RtxtNT <- Rtxt
 
+
+packageIsAvailable <- function(pkg, msg=NULL)
+{
+  if (pkg %notin% rownames(installed.packages()))
+  {
+    if (not.null(msg))
+      if (questionDialog(sprintf(Rtxt("The package '%s' is required to %s.",
+                                      "It does not appear to be installed.",
+                                      "A package can be installed",
+                                      "with the following R command:",
+                                      "\n\ninstall.packages('%s')",
+                                      "\n\nThis will allow access to use",
+                                      "the full functionality of %s.",
+                                      "\n\nWould you like the package to be installed now?"),
+                                 pkg, msg, pkg, crv$appname)))
+      {
+        install.packages(pkg)
+        return(TRUE)
+      }
+    return(FALSE)
+  }
+  else
+    return(TRUE)
+}
+
+
+"%notin%" <- function(x,y) ! x %in% y

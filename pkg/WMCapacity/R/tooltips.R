@@ -45,7 +45,7 @@
   }
 
   #require(XML, quietly=TRUE)
-  filename = getpackagefile("tooltips.xml")
+  filename = getpackagefile("textviews.xml")
 
   doc <- xmlTreeParse(filename, useInternalNodes=TRUE)
 

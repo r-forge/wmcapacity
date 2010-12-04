@@ -1,4 +1,4 @@
-.womSetupDiagnosticsComboBox()
+.womSetupDiagnosticsComboBox<-function()
 {
 	itersSpace = theWidget('diagnosticItersComboSpace')
 	typeSpace = theWidget('diagnosticTypeComboSpace')
