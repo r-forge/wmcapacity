@@ -126,7 +126,15 @@
 {
 	filename = paste(.womFileSafeString(modelName),".txt",sep="")
 	myModel = wommbatAnalysis$Models[[modelName]]
-	capMod=ifelse(wommbatAnalysis$Ktype==0,"Cowan","Pashler")
+	
+	if(wommbatAnalysis$Ktype==0){
+		capMod = "Cowan"
+	}else if(wommbatAnalysis$Ktype==1){
+		capMod = "Pashler"
+	}else if(wommbatAnalysis$Ktype==2){
+		capMod = "Morey (Experimental)"
+	}
+	
 	useCovMod = ifelse(myModel$model$covNgroups>0,"Yes","No")
 	
 	columns = paste(paste(wommbatAnalysis$SelCols[,1],wommbatAnalysis$SelCols[,2],sep=": "),collapse="\n")

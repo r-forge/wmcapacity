@@ -101,8 +101,20 @@ as.integer(COLUMNS[name])
 	
 		if(!is.null(wommbatAnalysis$Ktype))
 		{
-			theWidget("dataDesignPashlerRadio")$setActive(wommbatAnalysis$Ktype)
-			theWidget("dataDesignCowanRadio")$setActive(!wommbatAnalysis$Ktype)
+			if(wommbatAnalysis$Ktype==0){
+				theWidget("dataDesignPashlerRadio")$setActive(0)
+				theWidget("dataDesignCowanRadio")$setActive(1)
+				theWidget("dataDesignMoreyRadio")$setActive(0)
+			}else if(wommbatAnalysis$Ktype==1) {
+				theWidget("dataDesignPashlerRadio")$setActive(1)
+				theWidget("dataDesignCowanRadio")$setActive(0)
+				theWidget("dataDesignMoreyRadio")$setActive(0)
+			}else if(wommbatAnalysis$Ktype==2){
+				theWidget("dataDesignPashlerRadio")$setActive(0)
+				theWidget("dataDesignCowanRadio")$setActive(0)
+				theWidget("dataDesignMoreyRadio")$setActive(1)
+			}
+			
 		}
 	
 		# Load columns
@@ -654,12 +666,20 @@ as.integer(COLUMNS[name])
 	respText <- wommbatAnalysis$response <- theWidget("dataRespEntry")$getText()
 	changeText <- wommbatAnalysis$change <- theWidget("dataChangeEntry")$getText()
 	setsizeText <- wommbatAnalysis$setsize <- theWidget("dataSetsizeEntry")$getText()
+	
+	
+	# Get model type
+	if(theWidget("dataDesignMoreyRadio")$getActive()){
+		wommbatAnalysis$Ktype=as.integer(2)
+	}
 	if(theWidget("dataDesignPashlerRadio")$getActive()){
 		wommbatAnalysis$Ktype=as.integer(1)
 	}
 	if(theWidget("dataDesignCowanRadio")$getActive()){
 		wommbatAnalysis$Ktype=as.integer(0)
 	}
+	# Get model type
+	
 	
 	if(respText=="" | changeText=="" | setsizeText=="")
 	{

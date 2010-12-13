@@ -1035,7 +1035,15 @@ return(TRUE)
 		wommbatAnalysis$Models[[modelName]]$Ktype = wommbatAnalysis$Ktype
 	}else
 	{
-		wommbatAnalysis$Models[[modelName]]$Ktype = as.integer(theWidget("dataDesignPashlerRadio")$getActive())
+		if(theWidget("dataDesignMoreyRadio")$getActive()){
+			wommbatAnalysis$Models[[modelName]]$Ktype=as.integer(2)
+		}
+		if(theWidget("dataDesignPashlerRadio")$getActive()){
+			wommbatAnalysis$Models[[modelName]]$Ktype=as.integer(1)
+		}
+		if(theWidget("dataDesignCowanRadio")$getActive()){
+			wommbatAnalysis$Models[[modelName]]$Ktype=as.integer(0)
+		}
 	}
 	# Set new models to be analyzed
 	wommbatAnalysis$Models[[modelName]]$toBeAnalyzed <- TRUE

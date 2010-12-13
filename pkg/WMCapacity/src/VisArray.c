@@ -828,7 +828,7 @@ double LogLikelihood(double *params, int p, int *nHit, int *nMiss, int *nFA, int
 {
   
   int h=0,i=0,N=designDims[0],paramCounter=0,nDesign=designDims[1];
-  double K=0,G=0,A=0,PH=0,PF=0,logLike=0,d=0;
+  double K=0,G=0,A=0,PH=0,PF=0,logLike=0,d=0,d2=0;
   double effectiveG=0;
   
   //Rprintf("Starting Log Likelihood\n");
@@ -895,12 +895,22 @@ double LogLikelihood(double *params, int p, int *nHit, int *nMiss, int *nFA, int
       }else{
 	A = 1;
       }
-    PH = (1-A)*G + A*d + A*(1-d)*G;
+    
     if(Ktype==0)
       {
+		PH = (1-A)*G + A*d + A*(1-d)*G;
 		PF = (1-A)*G + A*(1-d)*G;
       }else if(Ktype==1){
+		PH = (1-A)*G + A*d + A*(1-d)*G;
 		PF = (1-A)*G + A*effectiveG;
+	  }else if(Ktype==2){
+		if(K>(setSize[h]-1)){
+			d2 = 1;
+		}else{
+			d2 = 1 - (1-K/setSize[h])*(1 - K/(setSize[h]-1));
+		}
+		PH = (1-A)*G + A*d2 + A*(1-d2)*G;
+		PF = (1-A)*G + A*(1-d)*G;
 	  }
 	logLike += nHit[h]*log(PH) + nMiss[h]*log(1-PH) + nFA[h]*log(PF) + nCR[h]*log(1-PF);
     predVals[h] = PH;
@@ -918,7 +928,7 @@ void gradLogPosterior(double *params, double *grad, int p, int *nHit, int *nMiss
   int h=0,i=0,j=0,paramCounter=0,N=designDims[0],nDesign=designDims[1];
   double sumSq=0,mean=0;
   double tf=0,th=0,dK=0,dA=0,dG=0;
-  double k=0,a=0,g=0,d=0,PH=0,PF=0;
+  double k=0,a=0,g=0,d=0,d2=0,PH=0,PF=0;
   double A=0,G=0;
   double a0=invGammaPriorA;
   double b0=invGammaPriorB;
@@ -995,13 +1005,22 @@ void R_CheckUserInterrupt(void);
 		A = 1;
      }
 	
-    PH = (1-A)*G + A*d + A*(1-d)*effectiveG;
-    if(Ktype==0){
+    if(Ktype==0)
+      {
+		PH = (1-A)*G + A*d + A*(1-d)*G;
 		PF = (1-A)*G + A*(1-d)*G;
-	}else if(Ktype==1){
+      }else if(Ktype==1){
+		PH = (1-A)*G + A*d + A*(1-d)*G;
 		PF = (1-A)*G + A*effectiveG;
-	}
-	
+	  }else if(Ktype==2){
+		if(k>(setSize[h]-1)){
+			d2 = 1;
+		}else{
+			d2 = 1 - (1-k/setSize[h])*(1 - k/(setSize[h]-1));
+		}
+		PH = (1-A)*G + A*d2 + A*(1-d2)*G;
+		PF = (1-A)*G + A*(1-d)*G;
+	  }
 	//PF = (1-A)/2 + A*(1-d)*G;
     
     th = (nHit[h] - PH*(nHit[h]+nMiss[h])) / (PH*(1-PH));
@@ -1033,6 +1052,17 @@ void R_CheckUserInterrupt(void);
 		dG = ((1-A + A*(1-d)*(int)(k<setSize[h]))*th + (1-A + A*(int)(k<setSize[h]))*tf)*dlogis(g,0,1,FALSE);
 		if(useA){
 			dA = ((-G + d + (1-d)*effectiveG)*th + (-G + effectiveG)*tf)*dlogis(a,0,1,FALSE);
+		}
+	}else if(Ktype==2){
+		if(k>(setSize[h]-1)){
+			d2 = 1;
+		}else{
+			d2 = 1 - (1-k/setSize[h])*(1 - k/(setSize[h]-1));
+		}
+		dK = (1-G)*th*A*(2*k/(setSize[h]*(setSize[h]-1)) - 1/setSize[h] - 1/(setSize[h]-1))*(int)(k>0 && k<(setSize[h]-1)) - G*tf*A/setSize[h]*(int)(k>0 && k<setSize[h]); 
+		dG = ((1-A*d2)*th + (1-A*d)*tf)*dlogis(g,0,1,FALSE);
+		if(useA){
+			dA = (d2*(1-G)*th - d*G*tf)*dlogis(a,0,1,FALSE);
 		}
 	}
 	
