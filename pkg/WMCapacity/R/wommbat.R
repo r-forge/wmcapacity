@@ -7,7 +7,7 @@ if (!exists("wommbatAnalysis", environment(), inherits=FALSE)) {
 	wommbatAnalysis <- new.env()
 }
 
-wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFrame = NULL) {
+wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFrame = NULL, devel = FALSE) {
 
 	options("guiToolkit"="RGtk2")
 
@@ -71,6 +71,9 @@ wommbatGUI <- function(project = NULL, projectFile= NULL,CSVfile = NULL, dataFra
 	}
 	
 	StateEnv$win$present()
+	if(!devel){
+		theWidget("dataDesignMoreyRadio")$hide()
+	}
 	return(invisible(NULL))
 }
 

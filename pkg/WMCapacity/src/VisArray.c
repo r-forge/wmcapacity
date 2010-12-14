@@ -907,7 +907,7 @@ double LogLikelihood(double *params, int p, int *nHit, int *nMiss, int *nFA, int
 		if(K>(setSize[h]-1)){
 			d2 = 1;
 		}else{
-			d2 = 1 - (1-K/setSize[h])*(1 - K/(setSize[h]-1));
+			d2 = 1 - (1-K/(1.0*setSize[h]))*(1 - K/(1.0*setSize[h]-1));
 		}
 		PH = (1-A)*G + A*d2 + A*(1-d2)*G;
 		PF = (1-A)*G + A*(1-d)*G;
@@ -1016,7 +1016,7 @@ void R_CheckUserInterrupt(void);
 		if(k>(setSize[h]-1)){
 			d2 = 1;
 		}else{
-			d2 = 1 - (1-k/setSize[h])*(1 - k/(setSize[h]-1));
+			d2 = 1 - (1-k/(1.0*setSize[h]))*(1 - k/(1.0*setSize[h]-1));
 		}
 		PH = (1-A)*G + A*d2 + A*(1-d2)*G;
 		PF = (1-A)*G + A*(1-d)*G;
@@ -1057,9 +1057,10 @@ void R_CheckUserInterrupt(void);
 		if(k>(setSize[h]-1)){
 			d2 = 1;
 		}else{
-			d2 = 1 - (1-k/setSize[h])*(1 - k/(setSize[h]-1));
+			d2 = 1 - (1-k/(1.0*setSize[h]))*(1 - k/(1.0*setSize[h]-1));
 		}
-		dK = (1-G)*th*A*(2*k/(setSize[h]*(setSize[h]-1)) - 1/setSize[h] - 1/(setSize[h]-1))*(int)(k>0 && k<(setSize[h]-1)) - G*tf*A/setSize[h]*(int)(k>0 && k<setSize[h]); 
+		dK = (1-G)*A*th*(2.0*setSize[h]-1-2*k)/(1.0*setSize[h]*(setSize[h]-1)) * (int)(k>0 && k<(setSize[h]-1)) +
+			  -G*A*tf/(1.0*setSize[h]) * (int)(k>0 && k<setSize[h]);		
 		dG = ((1-A*d2)*th + (1-A*d)*tf)*dlogis(g,0,1,FALSE);
 		if(useA){
 			dA = (d2*(1-G)*th - d*G*tf)*dlogis(a,0,1,FALSE);

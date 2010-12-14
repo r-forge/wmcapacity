@@ -8,7 +8,7 @@
      interface for the \code{WMCapacity} package.
      }
      \usage{
-     wommbatGUI(project = NULL, projectFile= NULL, CSVfile = NULL, dataFrame = NULL)
+     wommbatGUI(project = NULL, projectFile= NULL, CSVfile = NULL, dataFrame = NULL, devel=FALSE)
      }
      \arguments{
        \item{dataFrame}{a data frame containing the trial-by-trial data to be
@@ -19,6 +19,8 @@
 	 all the necessary information necessary to start an analysis.}
        \item{project}{a environment of a WMCapacity analysis, containing
 	 all the necessary information necessary to start an analysis.}
+	   \item{devel}{Turn on (undocumented) testing features.}
+	 
      }
      \details{This function starts the GUI for estimating working memory
      capacity from change detection data, using the hierarchical
