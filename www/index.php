@@ -61,8 +61,8 @@ echo $contents; } ?>
 
 <ol>
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>.
-<li> Download and install the latest version of the GTK+ runtime for Windows from the <a href="http://gtk-win.sourceforge.net/home/index.php/Downloads" target="null"> GTK SourceForge site</a>.
-<li> Start R. Cut and paste the following line of code into the R console:
+<li> Download and install the latest version of the GTK+ runtime for Windows from the <a href="http://sourceforge.net/projects/gtk-win/files/GTK%2B%20Runtime%20Environment/GTK%2B%202.22/" target="null"> GTK SourceForge site</a>.
+<li> Start <b>32-bit R</b>. Cut and paste the following line of code into the R console:
 <p><code>
 install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 </code> 
