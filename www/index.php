@@ -52,8 +52,6 @@ echo $contents; } ?>
 
 <p> You can find the <strong>project summary page</strong> <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
-<p><font color="red"><b>Note: WMCapacity is incompatible with the Rstudio IDE on Linux and Mac.</b></font>
-
 <H2>Installing WoMMBAT</H2>
 <p>WoMMBAT is available as a package for the <a href="http://www.r-project.org/" target="null">R statistical environment</a>. R is cross-platform; it be installed and used under Windows, Mac, or Linux operating systems. However, the install process for R and WoMMBAT are slightly different for each operating system. I describe the process for each in turn. (In compiling these instructions, I was helped by the instructions for installing the R package "rattle"; if the instructions below are unclear or do not work, try installing rattle using <a href="http://www.togaware.com/datamining/survivor/Installation_Details.html" target="null">these instructions</a>, then run the WMCapacity installation code given below in R)</p>
 
