@@ -184,25 +184,29 @@
 
 .womGetDiagnosticsModelSelection<-function()
 {
+	
 	treeview = theWidget("diagnosticDefinedModelsTreeview")
 	model <- gtkTreeViewGetModel(treeview)
 	selection <- gtkTreeViewGetSelection(treeview)
 	iter <- gtkTreeSelectionGetSelected(selection)$iter	
-
-	vis <- model$get(iter, .womDefinedModelsTreeCols("visible"))[[1]]
+		
+	# Next line caused crash - "visible" is not a valid column!
+	# I don't remember why I used this. (cut and paste?)
+	# vis <- model$get(iter, .womDefinedModelsTreeCols("visible"))[[1]]
+	vis <- NULL
+	
 	return(list(iter=iter,visible=vis))
 }
 
 
 .selected_diagnostics_model_row <- function(treeview, path, view_column)
 {
-	
+		
 	treeview <- theWidget("diagnosticDefinedModelsTreeview")
 	model = gtkTreeViewGetModel(treeview)	
 	
 	iter = .womGetDiagnosticsModelSelection()$iter
 	modelName = gtkTreeModelGetValue(model,iter,.womDefinedModelsTreeCols("name"))$value
-
 	
 	myModel = wommbatAnalysis$Models[[modelName]]
 
@@ -221,7 +225,7 @@
 	limitCombo$setSensitive(TRUE)
 	typeCombo$setSensitive(TRUE)
 	theWidget("hscrollbar1")$setSensitive(TRUE)
-
+	
 	
 	# Combo box for iterations limit
 	currentValue = limitCombo$getActiveText()

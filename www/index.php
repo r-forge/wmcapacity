@@ -70,8 +70,6 @@ install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 
 <H3>Installing WoMMBAT under Mac OS X</H3>
 
-<p><font color="red"><b>Note: WMCapacity is incompatible with the Rstudio IDE under Mac OS X.  Please run R without an R IDE when using WMCapacity.</b></font>
-
 <ol>
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>.
 <li> If you haven't alread installed the Mac OS X X11 libraries, install them using your OS X install disk. Instructions may be found on the <a href="http://developer.apple.com/opensource/tools/runningx11.html" target="null">Apple developer website</a>.
@@ -85,8 +83,6 @@ install.packages(c("gtools","coda","gWidgets","WMCapacity"),dep=TRUE)
 
 
 <H3>Installing WoMMBAT under Linux</H3>
-
-<p><font color="red"><b>Note: WMCapacity is incompatible with the Rstudio IDE under Linux. Please run R without an R IDE when using WMCapacity.</b></font>
 
 <ol>
 <li> Download the latest version of R from the <a href="http://cran.r-project.org/" target="null">Comprehensive R Archive Network</a>. Alternatively, you may install R from your Linux version's software repository (although it may not be the latest version).
