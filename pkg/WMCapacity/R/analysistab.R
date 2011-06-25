@@ -219,8 +219,8 @@
 	selection <- gtkTreeViewGetSelection(treeview)
 	iter <- gtkTreeSelectionGetSelected(selection)$iter	
 
-	vis <- model$get(iter, .womDefinedModelsTreeCols("visible"))[[1]]
-	return(list(iter=iter,visible=vis))
+	#vis <- model$get(iter, .womDefinedModelsTreeCols("visible"))[[1]]
+	return(list(iter=iter,visible=NULL))
 }
 
 .womLoadModelMCMCSettings <- function(modelName)
