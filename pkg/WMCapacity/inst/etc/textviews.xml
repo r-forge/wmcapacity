@@ -11,8 +11,8 @@ The fourth required column is some factor/covariate.</textview>
 <textview widget="startTextview2">The WoMMBAT software is copyrighted 2010 by Richard D. Morey. The software is free; the source code is available under the Gnu Public License, v2.0. For the most current citation information, contact Richard D. Morey at r.d.morey@rug.nl. 
 
 The citation for the hierarchical Bayesian model underlying the software is:
-Morey, R. D. (in press). A hierarchical Bayesian model for the measurement of working memory capacity. Journal of Mathematical Psychology.
+Morey, R. D. (2011). A hierarchical Bayesian model for the measurement of working memory capacity. Journal of Mathematical Psychology, 55, pp. 8-24
 
-The article to cite for the WoMMBAT software is currently in preparation:
-Morey, R. D. and Morey, C. C. (in preparation). WoMMBAT: a graphical user interface for estimating working memory capacity in change detection data.</textview>
+The article to cite for the WoMMBAT software is:
+Morey, R. D. and Morey, C. C. (2011). WoMMBAT: A user interface for hierarchical Bayesian estimation of working memory capacity. Behavior Research Methods</textview>
 </WMCapacity-textviews>
