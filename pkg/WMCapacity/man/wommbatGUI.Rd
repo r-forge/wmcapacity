@@ -24,7 +24,7 @@
      }
      \details{This function starts the GUI for estimating working memory
      capacity from change detection data, using the hierarchical
-     Bayesian models described in Morey (in preparation).
+     Bayesian models described in Morey (2011).
 
      There are a number of ways of passing data to the function. If you
      have the trial-by-trial data already loaded in R, you can pass the

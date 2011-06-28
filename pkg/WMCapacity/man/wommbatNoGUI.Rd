@@ -15,7 +15,7 @@
        \item{project}{a environment of a WMCapacity analysis, containing
 	 all the necessary information necessary to start an analysis.}
      }
-     \details{This function analyzes the models specified in the saved analysis file, using no GUI..
+     \details{This function analyzes the models specified in the saved analysis file, using no GUI.
 
      For further details, click on the Help button in the GUI, or see
      the user's manual at \url{http://wmcapacity.r-forge.r-project.org/}.

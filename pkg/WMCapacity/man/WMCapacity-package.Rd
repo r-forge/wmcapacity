@@ -7,7 +7,7 @@ Estimation of working memory capacity from change detection data
 }
 \description{
 The WMCapacity package implements the hierarchical Bayesian multinomial
-models of Morey (in press), for the estimation of working memory
+models of Morey (2011), for the estimation of working memory
 capacity from change detection data.
 }
 \details{
@@ -26,7 +26,7 @@ Most users will want to use this package through the
 Richard D. Morey <richarddmorey@gmail.com>
 }
 \references{
-Morey (in press). A hierarchical Bayesian model for the measurement of working memory capacity.
+Morey, R. D. (2011). A hierarchical Bayesian model for the measurement of working memory capacity. Journal of Mathematical Psychology, 55, 8-24
 }
 \keyword{nonlinear}
 
