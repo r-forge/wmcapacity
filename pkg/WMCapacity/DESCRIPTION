@@ -1,7 +1,7 @@
 Package: WMCapacity
 Type: Package
 Title: GUI implementing Bayesian working memory models
-Version: 0.9.6.4
+Version: 0.9.6.5
 Date: 2010-05-05
 Author: R. D. Morey <richarddmorey@gmail.com>
 Maintainer: R. D. Morey <richarddmorey@gmail.com>

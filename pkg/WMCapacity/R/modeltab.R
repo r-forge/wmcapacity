@@ -20,7 +20,7 @@ COLUMNS <- c(name=0,hasResults=1,toBeAnalyzed=2,parsOnK=3,parsOnZ=4,parsOnG=5,
 				NCovGroups=6,muKMean=7,muKSD=8,muZMean=9,muZSD=10,muGMean=11,muGSD=12,
 				invWishartScalar=13,invGammaA0=14,invGammaB0=15,
 				iterations=16,epsUpp=17,epsLow=18,leapfrog=19,useMet=20,metropScale=21,metropThin=22,
-				accRate=23,burnin=24,DIC=25,pD=26,timeAnalyzed=27,foreground=29,effectiveIterations=30,logLikePostMean=31,accColor=32)
+				accRate=23,burnin=24,DIC=25,pD=26,timeAnalyzed=27,foreground=28,effectiveIterations=29,logLikePostMean=30,accColor=31)
 as.integer(COLUMNS[name])
 }
 
@@ -81,12 +81,38 @@ as.integer(COLUMNS[name])
 .womCreateModelsDefinedModelsColumns <- function()
 {
 	
-	model <- gtkTreeStoreNew("gchararray","gboolean","gboolean","gchararray","gchararray","gchararray",
-								"gchararray","gchararray","gchararray","gchararray","gchararray","gchararray","gchararray",
-								"gchararray","gchararray","gchararray",
-								"gchararray","gchararray","gchararray","gchararray","gboolean","gchararray","gchararray",
-								"gchararray","gchararray","gchararray","gchararray","gchararray","gchararray","gchararray",
-								"gchararray","gchararray","gchararray")
+	model <- gtkTreeStoreNew("gchararray",
+						 	"gboolean", 
+						 	"gboolean", 
+						 	"gint", 
+						 	"gint",
+						 	"gint",
+							"gint", 
+							"gdouble", 
+							"gdouble", 
+							"gdouble", 
+							"gdouble", 
+							"gdouble", 
+							"gdouble",
+							"gdouble",
+							"gdouble",
+							"gdouble",
+							"gint",
+							"gchararray",
+							"gchararray",
+							"gint",
+							"gboolean",
+							"gdouble",
+							"gint",
+							"gdouble",
+							"gint",
+							"gdouble",
+							"gdouble",
+							"gchararray",
+							"gchararray",
+							"gint",
+							"gdouble",
+							"gchararray")
 								
 	modelsTreeview <- theWidget("modelsDefinedModelsTreeview")
 	analysisTreeview <- theWidget("analysisDefinedModelsTreeview")
@@ -131,8 +157,7 @@ as.integer(COLUMNS[name])
 		renderer <- gtkCellRendererTextNew()
 		renderer$set(xalign = 1.0)
 
-		col.offset <- treeview$insertColumnWithAttributes(-1, "K params", renderer, 
-  								text = .womDefinedModelsTreeCols("parsOnK"))
+		col.offset <- treeview$insertColumnWithAttributes(-1, "K params", 			renderer, text = .womDefinedModelsTreeCols("parsOnK"))
 								
 		column <- treeview$getColumn(col.offset - 1)
 		column$setClickable(TRUE)
@@ -1344,9 +1369,9 @@ return(TRUE)
 	myModel = wommbatAnalysis$Models[[modelName]]
 	
 	hasResults <- !is.null(myModel$results)
-	parsOnK <- .womSaneNum(rowSums(myModel$model$effects)[1])
-	parsOnZ <- .womSaneNum(rowSums(myModel$model$effects)[2])
-	parsOnG <- .womSaneNum(rowSums(myModel$model$effects)[3])
+	parsOnK <- as.integer(.womSaneNum(rowSums(myModel$model$effects)[1]))
+	parsOnZ <- as.integer(.womSaneNum(rowSums(myModel$model$effects)[2]))
+	parsOnG <- as.integer(.womSaneNum(rowSums(myModel$model$effects)[3]))
 		
 	iter <- model$append(NULL)$iter
 	model$set(iter,
@@ -1356,16 +1381,16 @@ return(TRUE)
 			  .womDefinedModelsTreeCols("parsOnK"), parsOnK,
 			  .womDefinedModelsTreeCols("parsOnZ"), parsOnZ,
 			  .womDefinedModelsTreeCols("parsOnG"), parsOnG,
-			  .womDefinedModelsTreeCols("NCovGroups"), myModel$model$covNgroups,
-			  .womDefinedModelsTreeCols("muKMean"), .womSaneNum(myModel$priors$muKMean,2),
-			  .womDefinedModelsTreeCols("muKSD"), .womSaneNum(myModel$priors$muKSD,2),
-			  .womDefinedModelsTreeCols("muZMean"), .womSaneNum(myModel$priors$muZMean,2),
-			  .womDefinedModelsTreeCols("muZSD"), .womSaneNum(myModel$priors$muZSD,2),
-			  .womDefinedModelsTreeCols("muGMean"), .womSaneNum(myModel$priors$muGMean,2),
-			  .womDefinedModelsTreeCols("muGSD"), .womSaneNum(myModel$priors$muGSD,2),
-			  .womDefinedModelsTreeCols("invWishartScalar"), .womSaneNum(myModel$priors$invWishartScalar,2),
-			  .womDefinedModelsTreeCols("invGammaA0"), .womSaneNum(myModel$priors$IGa0,2),
-			  .womDefinedModelsTreeCols("invGammaB0"), .womSaneNum(myModel$priors$IGb0,2),
+			  .womDefinedModelsTreeCols("NCovGroups"), as.integer(myModel$model$covNgroups),
+			  .womDefinedModelsTreeCols("muKMean"), as.numeric(.womSaneNum(myModel$priors$muKMean,2)),
+			  .womDefinedModelsTreeCols("muKSD"), as.numeric(.womSaneNum(myModel$priors$muKSD,2)),
+			  .womDefinedModelsTreeCols("muZMean"), as.numeric(.womSaneNum(myModel$priors$muZMean,2)),
+			  .womDefinedModelsTreeCols("muZSD"), as.numeric(.womSaneNum(myModel$priors$muZSD,2)),
+			  .womDefinedModelsTreeCols("muGMean"), as.numeric(.womSaneNum(myModel$priors$muGMean,2)),
+			  .womDefinedModelsTreeCols("muGSD"), as.numeric(.womSaneNum(myModel$priors$muGSD,2)),
+			  .womDefinedModelsTreeCols("invWishartScalar"), as.numeric(.womSaneNum(myModel$priors$invWishartScalar,2)),
+			  .womDefinedModelsTreeCols("invGammaA0"), as.numeric(.womSaneNum(myModel$priors$IGa0,2)),
+			  .womDefinedModelsTreeCols("invGammaB0"), as.numeric(.womSaneNum(myModel$priors$IGb0,2)),
 			  .womDefinedModelsTreeCols("iterations"), NULL,
 			  .womDefinedModelsTreeCols("epsUpp"), NULL,
 			  .womDefinedModelsTreeCols("epsLow"), NULL,

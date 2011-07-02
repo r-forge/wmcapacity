@@ -104,6 +104,8 @@
 								
 		column <- treeview$getColumn(col.offset - 1)
 		column$setClickable(TRUE)
+		gtkTreeViewColumnSetSortColumnId(column, .womDefinedModelsTreeCols("accRate"))
+
 
 		# iterations
 		renderer <- gtkCellRendererTextNew()
@@ -335,13 +337,13 @@
 					.womDefinedModelsTreeCols("iterations"), as.integer(myModel$settings$MCMCIters),
 					.womDefinedModelsTreeCols("effectiveIterations"), as.integer(myModel$settings$effectiveIters),
 					.womDefinedModelsTreeCols("timeAnalyzed"), as.character(myModel$results$timeAnalyzed),
-					.womDefinedModelsTreeCols("accRate"), .womSaneNum(myModel$results$accRate,2),
+					.womDefinedModelsTreeCols("accRate"), as.numeric(.womSaneNum(myModel$results$accRate,2)),
 					.womDefinedModelsTreeCols("useMet"), myModel$settings$useMH,
-					.womDefinedModelsTreeCols("burnin"), myModel$settings$burninIters,
-					.womDefinedModelsTreeCols("DIC"), .womSaneNum(myModel$results$DIC,1),
-					.womDefinedModelsTreeCols("pD"), .womSaneNum(myModel$results$pD,1),
+					.womDefinedModelsTreeCols("burnin"), as.integer(myModel$settings$burninIters),
+					.womDefinedModelsTreeCols("DIC"), as.numeric(.womSaneNum(myModel$results$DIC,1)),
+					.womDefinedModelsTreeCols("pD"), as.numeric(.womSaneNum(myModel$results$pD,1)),
 					.womDefinedModelsTreeCols("accColor"), foreCol,
-					.womDefinedModelsTreeCols("logLikePostMean"),  .womSaneNum(myModel$results$logLikePostMean,1)
+					.womDefinedModelsTreeCols("logLikePostMean"),  as.numeric(.womSaneNum(myModel$results$logLikePostMean,1))
 				)
 	if(myModel$settings$useMH)
 	{
