@@ -20,7 +20,7 @@ COLUMNS <- c(name=0,hasResults=1,toBeAnalyzed=2,parsOnK=3,parsOnZ=4,parsOnG=5,
 				NCovGroups=6,muKMean=7,muKSD=8,muZMean=9,muZSD=10,muGMean=11,muGSD=12,
 				invWishartScalar=13,invGammaA0=14,invGammaB0=15,
 				iterations=16,epsUpp=17,epsLow=18,leapfrog=19,useMet=20,metropScale=21,metropThin=22,
-				accRate=23,burnin=24,DIC=25,pD=26,timeAnalyzed=27,foreground=28,effectiveIterations=29,logLikePostMean=30,accColor=31)
+				accRate=23,burnin=24,DIC=25,pD=26,timeAnalyzed=27,foreground=28,effectiveIterations=29,logLikePostMean=30,accColor=31,DICtext=32)
 as.integer(COLUMNS[name])
 }
 
@@ -112,6 +112,7 @@ as.integer(COLUMNS[name])
 							"gchararray",
 							"gint",
 							"gdouble",
+							"gchararray",
 							"gchararray")
 								
 	modelsTreeview <- theWidget("modelsDefinedModelsTreeview")
@@ -121,9 +122,11 @@ as.integer(COLUMNS[name])
 	
 	resultsSortModel <- gtkTreeModelSortNewWithModel(child.model = model)
 	diagnosticsSortModel <- gtkTreeModelSortNewWithModel(child.model = model)
+	analysisSortModel <- gtkTreeModelSortNewWithModel(child.model = model)
+
 
 	gtkTreeViewSetModel(modelsTreeview, model)	
-	gtkTreeViewSetModel(analysisTreeview, model)	
+	gtkTreeViewSetModel(analysisTreeview, analysisSortModel)	
 	gtkTreeViewSetModel(diagnosticsTreeview, diagnosticsSortModel)	
 	gtkTreeViewSetModel(resultsTreeview, resultsSortModel)	
 	

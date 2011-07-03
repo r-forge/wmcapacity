@@ -186,7 +186,7 @@ as.integer(COLUMNS[name])
 		renderer$set(xalign = 1.0)
 
 		col.offset <- treeview$insertColumnWithAttributes(-1, "DIC", renderer, 
-  								text = .womDefinedModelsTreeCols("DIC"))
+  								text = .womDefinedModelsTreeCols("DICtext"))
 								
 		column <- treeview$getColumn(col.offset - 1)
 		column$setClickable(TRUE)

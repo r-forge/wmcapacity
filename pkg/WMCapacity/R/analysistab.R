@@ -340,7 +340,10 @@
 					.womDefinedModelsTreeCols("accRate"), as.numeric(.womSaneNum(myModel$results$accRate,2)),
 					.womDefinedModelsTreeCols("useMet"), myModel$settings$useMH,
 					.womDefinedModelsTreeCols("burnin"), as.integer(myModel$settings$burninIters),
-					.womDefinedModelsTreeCols("DIC"), as.numeric(.womSaneNum(myModel$results$DIC,1)),
+					.womDefinedModelsTreeCols("DIC"), 
+					as.numeric(.womSaneNum(myModel$results$DIC,1)),
+					.womDefinedModelsTreeCols("DICtext"), 
+					.womSaneNum(myModel$results$DIC,1),
 					.womDefinedModelsTreeCols("pD"), as.numeric(.womSaneNum(myModel$results$pD,1)),
 					.womDefinedModelsTreeCols("accColor"), foreCol,
 					.womDefinedModelsTreeCols("logLikePostMean"),  as.numeric(.womSaneNum(myModel$results$logLikePostMean,1))
