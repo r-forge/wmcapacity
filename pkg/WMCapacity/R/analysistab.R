@@ -15,8 +15,11 @@
 .womToggleAnalyzeModel<- function(cell, path.str, data)
 {
   #checkPtrType(data, "GtkTreeModel")
-  model <- theWidget("analysisDefinedModelsTreeview")$getModel()
-  
+  #model <- theWidget("analysisDefinedModelsTreeview")$getModel()
+  model <- theWidget("modelsDefinedModelsTreeview")$getModel()
+
+  #model2 <- gtkTreeModelSortGetModel(model)
+ 
   path <- gtkTreePathNewFromString(path.str)
   
   #column <- cell$getData("column")
@@ -25,12 +28,13 @@
   # get toggled iter
   iter <- model$getIter(path)$iter
   toggle.item <- gtkTreeModelGetValue(model, iter, column)$value
- 
+  
   # do something with the value
   toggle.item <- !toggle.item
 
   # set new value
   model$set(iter, column, toggle.item)
+  #gtkTreeStoreSetValue(model2, iter, column, toggle.item)
 }
 
 .womCreateAnalysisDefinedModelsColumns <- function()
