@@ -225,7 +225,8 @@ RtxtNT <- Rtxt
 
 packageIsAvailable <- function(pkg, msg=NULL)
 {
-  if (pkg %notin% rownames(installed.packages()))
+  #if (pkg %notin% rownames(installed.packages()))
+  if (!require(pkg, quietly=TRUE))
   {
     if (not.null(msg))
       if (questionDialog(sprintf(Rtxt("The package '%s' is required to %s.",
